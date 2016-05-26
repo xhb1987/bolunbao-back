@@ -1,0 +1,19 @@
+extends ../layout
+
+block body
+	h1
+		| Login Form
+
+	form(name="login-form", method="post", action="/user/login")
+		div(class="input-container")
+			label(for="username")
+				| username
+				input(name="username", type="text")
+
+		div(class="input-container")
+			label(for="password")
+				| password
+				input(name="password", type="password")
+
+		button(type="submit")
+			| submit

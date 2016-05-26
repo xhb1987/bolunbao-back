@@ -1,0 +1,19 @@
+extends ../layout
+
+block body
+	h1 
+		| this is the product create page
+
+	form(name="product-create", method="post", action="/product/create")
+		div(class="input-container")
+			label(for="productName")
+				| product name
+				input(name="productName", type="text")
+
+		div(class="input-container")
+			label(for="prodcutDesc")
+				| product description
+				input(name="productDesc", type="text")
+
+		button(type="submit")
+			| submit

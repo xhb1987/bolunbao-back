@@ -1,0 +1,11 @@
+extends ../layout
+
+block body
+	h1 
+		| this is the product page
+
+	ul
+		each item in productList
+			li(data-id=item.id)
+				a(href="/product/detail/#{item.id}")
+					= item.attributes.ProductName

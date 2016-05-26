@@ -1,0 +1,47 @@
+extends ./layout
+
+
+block body
+    div.row
+        div.carousel.slide(id="carousel-example-generic", data-ride="carousel")
+            ol.carousel-indicators
+                li.active(data-target="#carousel-example-generic", data-slide-to="0")
+                li(data-target="#carousel-example-generic", data-slide-to="1")    
+                li(data-target="#carousel-example-generic", data-slide-to="2")
+
+            div.carousel-inner(role="listbox")
+                div.item.active
+                    img(src="/images/carousel/carousel1.jpg", alt="carousel1")
+                div.item
+                    img(src="/images/carousel/carousel2.jpg", alt="carousel2")
+                div.item
+                    img(src="/images/carousel/carousel3.jpg", alt="carousel3")
+
+            a.left.carousel-control(href="#carousel-example-generic", role="button", data-slide="prev")
+                span.glyphicon.glyphicon-chevron-left(aria-hidden="true")
+                span.sr-only Previous
+
+            a.right.carousel-control(href="#carousel-example-generic", role="button", data-slide="next")
+                span.glyphicon.glyphicon-chevron-right(aria-hidden="true")
+                span.sr-only Next
+
+    div.row
+        h2.text-center How it works
+        div.col-sm-6.col-md-4
+            div.thumbnail
+                img(src="/images/thumbnail/thumbnail1.png")
+                div.caption
+                    h3 Thumbnail1
+                    p Thumbnail 1 description
+        div.col-sm-6.col-md-4
+            div.thumbnail
+                img(src="/images/thumbnail/thumbnail2.png")
+                div.caption
+                    h3 Thumbnail2
+                    p Thumbnail 2 description
+        div.col-sm-6.col-md-4
+            div.thumbnail
+                img(src="/images/thumbnail/thumbnail3.png")
+                div.caption
+                    h3 Thumbnail3
+                    p Thumbnail 3 description

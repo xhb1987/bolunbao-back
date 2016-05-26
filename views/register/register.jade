@@ -1,0 +1,34 @@
+extends ../layout
+
+block body
+	h1
+		| Register Form
+
+	form(name="register-form", method="post", action="/user/register")
+		div(class="input-container")
+			label(for="username")
+				| username
+				input(name="username", type="text")
+
+		div(class="input-container")
+			label(for="password")
+				| password
+				input(name="password", type="password")
+
+		div(class="input-container")
+			label(for="passwordConfirm")
+				| password confirm
+				input(name="passwordConfirm", type="password")
+
+		div(class="input-container")
+			label(for="email")
+				| email
+				input(name="email", type="email")
+
+		div(class="input-container")
+			label(for="phone")
+				| phone
+				input(name="phone", type="phone")
+
+		button(type="submit")
+			| submit
