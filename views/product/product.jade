@@ -1,11 +1,12 @@
 extends ../layout
 
 block body
-	h1 
-		| this is the product page
-
-	ul
-		each item in productList
-			li(data-id=item.id)
-				a(href="/product/detail/#{item.id}")
-					= item.attributes.ProductName
+    div.jumbotron
+        h2 商城首页
+    div.row
+        each item in productList
+            div.col-xs-6.col-md-4(data-id=item.id)
+                a.thumbnail(href="/product/detail/#{item.id}")
+                    = item.attributes.ProductName
+                    p
+                        = item.attributes.ProductDesc

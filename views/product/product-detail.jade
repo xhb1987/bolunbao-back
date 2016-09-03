@@ -1,11 +1,10 @@
 extends ../layout
 
 block body
-	h1 
-		| this is the product detail page
+    div.jumbotron
+        h2 产品详情页
+    p
+        = productData.attributes.ProductName
 
-	p
-		= productData.attributes.ProductName
-
-	p
-		= productData.attributes.ProductDesc
+    p
+        = productData.attributes.ProductDesc

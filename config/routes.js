@@ -45,6 +45,12 @@ module.exports.routes = {
      * for configuration options and examples.                                  *
      *                                                                          *
      ***************************************************************************/
+    'get /init/init': { 
+        controller: "InitController",
+        action: "init",
+        cors: true                    
+    },
+
     'get /user/login': {
         view: 'login/login'
     },

@@ -5,10 +5,10 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 var product = new globalServices.Product();
-var query = new globalServices.AV.Query('Products');
 
 module.exports = {
 	index: function (req, res, next) {
+        var query = new globalServices.AV.Query('Products');
 		query.find().then(function (products) {
 			console.log(products);
 			res.view('product/product', {productList: products});
@@ -18,7 +18,7 @@ module.exports = {
 	},
 
     create: function(req, res, next) {
-    	
+    	var query = new globalServices.AV.Query('Products');
         var name = req.param('productName'),
             desc = req.param('productDesc');
 
@@ -37,6 +37,7 @@ module.exports = {
     },
 
     update: function(req, res, next) {
+        var query = new globalServices.AV.Query('Products');
         var id = req.param('id');
 
         console.log(id);
@@ -44,6 +45,7 @@ module.exports = {
     },
 
     find: function(req, res, next) {
+        var query = new globalServices.AV.Query('Products');
         var id = req.param('id');
         query.get(id).then(function(product) {
         	console.log(product);
@@ -54,6 +56,7 @@ module.exports = {
     },
 
     delete: function(req, res, next) {
+        var query = new globalServices.AV.Query('Products');
     	var id = req.param('id');
         console.log(id);
         res.json(id);    	
