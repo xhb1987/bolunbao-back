@@ -8,10 +8,11 @@ var product = new globalServices.Product();
 
 module.exports = {
 	index: function (req, res, next) {
+        var limit = req.param.limit || 10;
         var query = new globalServices.AV.Query('Products');
+        query.limit(limit);
 		query.find().then(function (products) {
-			console.log(products);
-			res.view('product/product', {productList: products});
+            res.json(products)
 		}, function (err) {
 			res.json(600, {status: 'fail', message: 'products query fail: ' + err.message});
 		})

@@ -52,19 +52,36 @@ module.exports.routes = {
     },
 
     'get /user/login': {
-        view: 'login/login'
+        view: 'login/login',
     },
 
     'get /user/register': {
     	view: 'register/register'
     },
 
-    'post /user/login': 'LoginController.login',
-    'post /user/logout': 'LoginController.logout',
+    'post /user/login': {
+        controller: 'LoginController',
+        action: 'login',
+        cors: true
+    },
 
-    'post /user/register': 'RegisterController.register',
+    'post /user/logout': {
+        controller: 'LoginController',
+        action: 'logout',
+        cors: true
+    },
 
-    'get /product': 'ProductController.index',
+    'post /user/register': {
+        controller: 'RegisterController',
+        action: 'register',
+        cors: true
+    },
+
+    'get /product': {
+        controller: 'ProductController',
+        action: 'index',
+        cors: true
+    },
 
     'get /product/create': {
     	view: 'product/product-create'
@@ -72,6 +89,13 @@ module.exports.routes = {
     
     'post /product/create': 'ProductController.create',
     'put /product/update/:id': 'ProductController.update',
-    'get /product/detail/:id': 'ProductController.find',
+
+    'get /product/detail/:id': {
+        controller: 'ProductController',
+        action: 'find',
+        view: 'product/product-detail',
+        cors: true
+    },
+
     'delete /product/delete/:id': 'ProductController.delete'
 };
