@@ -45,10 +45,10 @@ module.exports.routes = {
      * for configuration options and examples.                                  *
      *                                                                          *
      ***************************************************************************/
-    'get /init/init': { 
+    'get /init/init': {
         controller: "InitController",
         action: "init",
-        cors: true                    
+        cors: true
     },
 
     'get /user/login': {
@@ -56,7 +56,7 @@ module.exports.routes = {
     },
 
     'get /user/register': {
-    	view: 'register/register'
+        view: 'register/register'
     },
 
     'post /user/login': {
@@ -84,9 +84,9 @@ module.exports.routes = {
     },
 
     'get /product/create': {
-    	view: 'product/product-create'
+        view: 'product/product-create'
     },
-    
+
     'post /product/create': 'ProductController.create',
     'put /product/update/:id': 'ProductController.update',
 
