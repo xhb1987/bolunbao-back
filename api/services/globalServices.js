@@ -6,7 +6,14 @@
  */
 
 module.exports = {
+    // lean cloud
 	AV: sails.config.leanCloud.AV,
-	Product: sails.config.leanCloud.AV.Object.extend('Products')
+	Product: sails.config.leanCloud.AV.Object.extend('Products'),
+
+    // privilege enum
+    privilegeEmun: {
+        ADMIN: 'admin',
+        CLIENT: 'client'
+    }
 };
 

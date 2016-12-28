@@ -6,7 +6,9 @@
  */
 
 module.exports = {
+    
     init: function(req, res, next) {
+        
         res.json('im init');
     }
 };

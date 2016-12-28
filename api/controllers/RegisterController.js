@@ -7,21 +7,16 @@
 
 module.exports = {
     register: function(req, res, next) {
-        var username = req.body.params.username,
-            password = req.body.params.password,
-            email = 'email@text.come',
-            phone = username;
+        var user = {}
 
-        var user = new globalServices.AV.User();
-        user.set('username', username);
-        user.set('password', password);
-        user.set('email', email);
-        user.set('phone', phone);
+        user.name = req.body.params.username,
+        user.password = req.body.params.password,
+        user.phone = req.body.params.username;
 
-        user.signUp().then(function(user) {
+        User.create(user, function (user) {
             res.json(user);
-        }, function(error) {
-            res.json(600, { status: 'fail', message: error.message });
+        }, function (error) {
+            res.json(error.code, { status: 'fail', message: error.message})
         });
     }
 };
