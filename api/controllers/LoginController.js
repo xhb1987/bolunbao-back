@@ -12,9 +12,11 @@ module.exports = {
 
         globalServices.AV.User.logIn(username, password).then(function(user) {
             
-            var current = globalServices.AV.User.current();
-            // req.session.userId = current._sessionToken;
-            res.cookie('current', current);
+            // var current = globalServices.AV.User.current();
+            globalServices.currentUserList[user._sessionToken] = user;
+            req.session.userId = user._sessionToken;
+            res.cookie('current', user);
+            res.cookie('token', user._sessionToken);
             res.json(user)
         }, function(error) {
             res.json(error.code, { status: 'fail', message: error.message });

@@ -14,6 +14,8 @@ module.exports = {
     privilegeEmun: {
         ADMIN: 'admin',
         CLIENT: 'client'
-    }
+    },
+
+    currentUserList: {}
 };
 

@@ -24,10 +24,16 @@ module.exports.http = {
   middleware: {
 
     hasCurrentUser: function (req, res, next) {
-        var current = globalServices.AV.User.current();
-        if (current) {
-            res.cookie('current', current)
-        }
+        if (req.cookies.token) {
+             var current = globalServices.currentUserList[req.cookies.token];
+            if (globalServices.currentUserList[req.cookies.token]) {
+                res.cookie('current', current);
+            }
+        }       
+        // var current = globalServices.AV.User.current();
+        // if (current) {
+        //     res.cookie('current', current)
+        // }
         next();
     },
 
