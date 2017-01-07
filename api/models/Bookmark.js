@@ -18,7 +18,7 @@ module.exports = {
     },
 
     addBookmark: function (value) {
-        bookmark.push(value)
+        this.bookmark.push(value)
     }
 };
 

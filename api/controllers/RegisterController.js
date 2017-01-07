@@ -12,7 +12,8 @@ module.exports = {
         user.name = req.body.params.username,
         user.password = req.body.params.password,
         user.phone = req.body.params.username;
-
+        user.role = req.body.params.role;
+        
         User.create(user, function (user) {
             res.json(user);
         }, function (error) {

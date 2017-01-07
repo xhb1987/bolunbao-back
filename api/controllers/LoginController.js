@@ -10,22 +10,19 @@ module.exports = {
         var username = req.body.params.username;
         var password = req.body.params.password;
 
-        globalServices.AV.User.logIn(username, password).then(function(user) {
-            
-            // var current = globalServices.AV.User.current();
+        User.login(username, password, function(user) {
             globalServices.currentUserList[user._sessionToken] = user;
             req.session.userId = user._sessionToken;
             res.cookie('current', user);
             res.cookie('token', user._sessionToken);
             res.json(user)
         }, function(error) {
-            res.json(error.code, { status: 'fail', message: error.message });
+             res.json(error.code, { status: 'fail', message: error.message });
         });
     },
 
     logout: function(req, res, next) {
         globalServices.AV.User.logOut();
-        console.log('logout');
         res.json({ status: 'ok' });
     }
 };

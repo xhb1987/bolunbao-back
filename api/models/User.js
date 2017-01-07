@@ -43,17 +43,31 @@ module.exports = {
     },
 
     create: function (user, success, fail) {
-        var globalPrivilege = globalServices.privilegeEmun;
+        var globalPrivilege = globalServices.privilegeEmun,
+            userWithRole,
+            userWithBookmark;
 
         this.name = user.name;
         this.password = user.password;
         this.phone = user.phone;
+        this.role = user.role;
 
-        User = Role.create(User, 'none');
-        User.role.roleTestFunction();
-        if (this.role.privilege == globalPrivilege.CLIENT) {
-            User = Bookmark.create(this);
+        if (this.role == void 0) {
+            this.role = 'none';
         }
+
+        userWithRole = Role.create(User, this.role);
+        if (userWithRole) {
+            User = userWithRole;
+        }
+
+        if (this.role.privilege == globalPrivilege.CLIENT) {
+            userWithBookmark = Bookmark.create(User);
+            if (userWithBookmark) {
+                User = userWithBookmark;
+            }
+        }
+
         this.save(success, fail);
     },
 
@@ -69,13 +83,21 @@ module.exports = {
         return this.verified;
     },
 
-    save: function (success, fail) {
-        var user = new globalServices.AV.User();
-        user.set('username', this.name);
-        user.set('password', this.password);
-        user.set('phone', this.phone);
+    login: function (username, password, success, fail) {
+        globalServices.AV.User.logIn(username, password).then(function (user) {
+            success(user);
+        }, function(error) {
+            fail(error);
+        })
+    },
 
-        user.signUp().then(function (user) {
+    save: function (success, fail) {
+        var leanUser = new globalServices.AV.User();
+        leanUser.set('username', this.name);
+        leanUser.set('password', this.password);
+        leanUser.set('phone', this.phone);
+
+        leanUser.signUp().then(function (user) {
             success(user);
         }, function (error) {
             fail(error);

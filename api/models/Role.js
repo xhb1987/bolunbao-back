@@ -13,6 +13,7 @@ module.exports = {
     },
 
     create: function (user, accessRight) {
+
         var globalPrivilege = globalServices.privilegeEmun;
         switch (accessRight) {
             case globalPrivilege.ADMIN:
@@ -27,12 +28,15 @@ module.exports = {
                 this.privilege = 'none';
                 break;
         };
+
+        console.log('user: ', user);
+
         user.role = Role;
         return user;
     },
 
     roleTestFunction: function () {
-        console.log('role test')
+        // console.log('role test')
     }
 };
 
